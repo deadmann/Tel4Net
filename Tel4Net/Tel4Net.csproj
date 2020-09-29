@@ -11,6 +11,8 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>- 1.0.0: Initial Release</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Authors>Hassan Faghihi</Authors>
+    <Product>Tel4You</Product>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
