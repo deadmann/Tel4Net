@@ -1,5 +1,5 @@
 # Tel4Net
-Provide Utility to validate and normalize telephone numbers
+Provide Utility to validate and normalize telephone numbers for .Net based projects (.Net Standard/Core/Framework).
 
 This validator respects: E.164
 
