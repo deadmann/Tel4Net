@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tel4Net</name>
+    </assembly>
+    <members>
+        <member name="P:Tel4Net.TelephoneOptions.ProcessNaturalCharacterOnly">
+            <summary>
+            If true:  ignores any characters beside formal ascii english numbers. <br />
+            If false: try to convert undefined characters (number from other languages) to ascii english corresponding characters, and then normalize.
+            </summary>
+        </member>
+    </members>
+</doc>

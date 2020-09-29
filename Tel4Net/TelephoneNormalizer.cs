@@ -1,11 +1,23 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 
 namespace Tel4Net
 {
+    /// <summary>
+    /// This class provides phone number Normalizations functionality
+    /// </summary>
     public static class TelephoneNormalizer
     {
-        // ReSharper disable once InconsistentNaming
+        /// <summary>
+        /// Normalize a phone number, with respect to parts which that phone number provides (e.g. it won't change an international phone number to city phone number).
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="options"></param>
+        /// <param name="defaultI18nStart">while normalizing an international phone number, let you choose that number start with 00 or +.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         public static string ToPhoneNumberNormalization(string phoneNumber, TelephoneOptions options = null, string defaultI18nStart = "+")
         {
             phoneNumber = PreNormalizationHandling(phoneNumber, options);

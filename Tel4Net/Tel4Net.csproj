@@ -1,7 +1,28 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RepositoryUrl>https://github.com/deadmann/Tel4Net</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/users/deadmann/projects/1</PackageProjectUrl>
+    <PackageTags>Telephone, Mobile Phone, Telephone Normalization, Telephone Validation</PackageTags>
+    <Copyright>© 2020 Hassan Faghihi</Copyright>
+    <Description>Provides validation and normalization for phone numbers. with respect to E.164 (an international standard (ITU-T Recommendation), titled The international public telecommunication numbering plan)</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>- 1.0.0: Initial Release</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DocumentationFile>Tel4Net.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

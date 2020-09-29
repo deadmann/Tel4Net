@@ -1,5 +1,8 @@
 ﻿namespace Tel4Net
 {
+    /// <summary>
+    /// Provides extra options while validating a telephone number
+    /// </summary>
     public class TelephoneOptions
     {
         /// <summary>
@@ -9,6 +12,9 @@
         public bool ProcessNaturalCharacterOnly { get; set; }
 
         #region Defaults
+        /// <summary>
+        /// The default sets of configurations
+        /// </summary>
         public static readonly TelephoneOptions Default = new TelephoneOptions
         {
             ProcessNaturalCharacterOnly = false

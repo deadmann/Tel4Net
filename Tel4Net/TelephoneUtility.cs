@@ -4,7 +4,7 @@ using Tel4Net.LanguageUtilities;
 
 namespace Tel4Net
 {
-    public static class TelephoneUtility
+    internal static class TelephoneUtility
     {
         private static readonly IList<ICharacterHandler> LanguageHandlers = new List<ICharacterHandler>();
         static TelephoneUtility()

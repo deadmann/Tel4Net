@@ -4,6 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace Tel4Net
 {
+    /// <summary>
+    /// This class provides phone number Validations functionality
+    /// </summary>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class TelephoneValidator
     {
@@ -15,7 +18,13 @@ namespace Tel4Net
         private static readonly int MaximumPhoneNumberLength = 14;//for future 1+
 
 
-        // ReSharper disable once InconsistentNaming
+        /// <summary>
+        /// Validate a phone number in length and signature of against an international phone number rules
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         public static bool PhoneNumberI10nValidation(string phoneNumber, TelephoneOptions options = null)
         {
             phoneNumber = PreValidateHandling(phoneNumber, options);
@@ -26,6 +35,12 @@ namespace Tel4Net
             return PhoneNumberValidateLength(phoneNumber, options) && PhoneNumberValidateFormat(phoneNumber, options);
         }
 
+        /// <summary>
+        /// Validate a phone number in length and signature of against an city phone number rules
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public static bool PhoneNumberCityValidation(string phoneNumber, TelephoneOptions options = null)
         {
             phoneNumber = PreValidateHandling(phoneNumber, options);
@@ -36,6 +51,12 @@ namespace Tel4Net
             return PhoneNumberValidateLength(phoneNumber, options) && PhoneNumberValidateFormat(phoneNumber, options);
         }
 
+        /// <summary>
+        /// Validate a phone number in length and signature of against an inbound (local) phone number rules
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public static bool PhoneNumberInboundValidation(string phoneNumber, TelephoneOptions options = null)
         {
             phoneNumber = PreValidateHandling(phoneNumber, options);
@@ -46,6 +67,12 @@ namespace Tel4Net
             return PhoneNumberValidateLength(phoneNumber, options) && PhoneNumberValidateFormat(phoneNumber, options);
         }
 
+        /// <summary>
+        /// Validates phone number in length and signatures regardless that if the phone number is local, city or international number
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public static bool PhoneNumberValidate(string phoneNumber, TelephoneOptions options =null)
         {
             phoneNumber = PreValidateHandling(phoneNumber, options);
@@ -53,6 +80,12 @@ namespace Tel4Net
             return PhoneNumberValidateFormat(phoneNumber, options) && PhoneNumberValidateLength(phoneNumber, options);
         }
 
+        /// <summary>
+        /// Validations only the signatures of the phone number
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public static bool PhoneNumberValidateFormat(string phoneNumber, TelephoneOptions options =null)
         {
             phoneNumber = PreValidateHandling(phoneNumber, options);
@@ -72,6 +105,12 @@ namespace Tel4Net
             return RegexPhoneNumber.IsMatch(phoneNumber);
         }
 
+        /// <summary>
+        /// Validates only the total length of the phone number
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public static bool PhoneNumberValidateLength(string phoneNumber, TelephoneOptions options = null)
         {
             phoneNumber = PreValidateHandling(phoneNumber, options);
