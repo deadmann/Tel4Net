@@ -8,7 +8,7 @@
             Closing = closing;
         }
 
-        public char Opening { get; private set; }
-        public char Closing { get; private set; }
+        public char Opening { get; }
+        public char Closing { get; }
     }
 }
