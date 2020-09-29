@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tel4Net", "Tel4Net\Tel4Net.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Docs", "_Docs", "{661C6369-62F2-4B68-988F-954E8385227D}"
 	ProjectSection(SolutionItems) = preProject
-		..\_Docs\push nuget github package.txt = ..\_Docs\push nuget github package.txt
+		_Docs\push nuget github package.txt = _Docs\push nuget github package.txt
 	EndProjectSection
 EndProject
 Global
