@@ -4,11 +4,89 @@
         <name>Tel4Net</name>
     </assembly>
     <members>
+        <member name="T:Tel4Net.TelephoneNormalizer">
+            <summary>
+            This class provides phone number Normalizations functionality
+            </summary>
+        </member>
+        <member name="M:Tel4Net.TelephoneNormalizer.ToPhoneNumberNormalization(System.String,Tel4Net.TelephoneOptions,System.String)">
+            <summary>
+            Normalize a phone number, with respect to parts which that phone number provides (e.g. it won't change an international phone number to city phone number).
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="options"></param>
+            <param name="defaultI18nStart">while normalizing an international phone number, let you choose that number start with 00 or +.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="T:Tel4Net.TelephoneOptions">
+            <summary>
+            Provides extra options while validating a telephone number
+            </summary>
+        </member>
         <member name="P:Tel4Net.TelephoneOptions.ProcessNaturalCharacterOnly">
             <summary>
             If true:  ignores any characters beside formal ascii english numbers. <br />
             If false: try to convert undefined characters (number from other languages) to ascii english corresponding characters, and then normalize.
             </summary>
+        </member>
+        <member name="F:Tel4Net.TelephoneOptions.Default">
+            <summary>
+            The default sets of configurations
+            </summary>
+        </member>
+        <member name="T:Tel4Net.TelephoneValidator">
+            <summary>
+            This class provides phone number Validations functionality
+            </summary>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.PhoneNumberI10nValidation(System.String,Tel4Net.TelephoneOptions)">
+            <summary>
+            Validate a phone number in length and signature of against an international phone number rules
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.PhoneNumberCityValidation(System.String,Tel4Net.TelephoneOptions)">
+            <summary>
+            Validate a phone number in length and signature of against an city phone number rules
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.PhoneNumberInboundValidation(System.String,Tel4Net.TelephoneOptions)">
+            <summary>
+            Validate a phone number in length and signature of against an inbound (local) phone number rules
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.PhoneNumberValidate(System.String,Tel4Net.TelephoneOptions)">
+            <summary>
+            Validates phone number in length and signatures regardless that if the phone number is local, city or international number
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.PhoneNumberValidateFormat(System.String,Tel4Net.TelephoneOptions)">
+            <summary>
+            Validations only the signatures of the phone number
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.PhoneNumberValidateLength(System.String,Tel4Net.TelephoneOptions)">
+            <summary>
+            Validates only the total length of the phone number
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="options"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>
