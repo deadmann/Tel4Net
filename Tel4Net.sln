@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tel4Net", "Tel4Net\Tel4Net.csproj", "{EAF58A04-4C35-4798-BA2B-671CDC291EDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAF58A04-4C35-4798-BA2B-671CDC291EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF58A04-4C35-4798-BA2B-671CDC291EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF58A04-4C35-4798-BA2B-671CDC291EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF58A04-4C35-4798-BA2B-671CDC291EDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E04404F-FE63-47E7-9231-ED060D8EA9E0}
+	EndGlobalSection
+EndGlobal
