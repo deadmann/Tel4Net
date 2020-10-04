@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
+using Tel4Net.RegionValidation;
 
 namespace Tel4Net
 {
@@ -17,6 +19,155 @@ namespace Tel4Net
         private static readonly int MinimumPhoneNumberLength = 1;
         private static readonly int MaximumPhoneNumberLength = 14;//for future 1+
 
+        private static readonly RegionValidatorContainer RegionValidatorContainer = new RegionValidatorContainer();
+
+        #region Mobile Validators
+
+        /// <summary>
+        /// Validates mobile number [1/3 In all available regions]
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static bool MobileValidator(string phoneNumber, RegionalOptions options = null)
+        {
+            return MobileValidator(phoneNumber, RegionValidatorContainer.GetAllValidators(), options);
+        }
+
+        /// <summary>
+        /// Validates mobile number [2/3 In a single region]
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="region"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static bool MobileValidator(string phoneNumber, Region region, RegionalOptions options = null)
+        {
+            var regionValidator = RegionValidatorContainer.GetRegionValidator(region);
+            if(regionValidator==null)
+                throw new NotImplementedException("No Validator implementation found for this region");
+            return MobileValidator(phoneNumber, new List<IRegionValidator>{regionValidator}, options);
+        }
+
+        /// <summary>
+        /// Validates mobile number [3/3 In a list of selected regions]
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="regions"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static bool MobileValidator(string phoneNumber,IEnumerable<Region> regions, RegionalOptions options = null)
+        {
+            List<IRegionValidator> validators = new List<IRegionValidator>();
+            foreach (var region in regions)
+            {
+                var regionValidator = RegionValidatorContainer.GetRegionValidator(region);
+                if (regionValidator == null)
+                    throw new NotImplementedException($"No Validator implementation found for {region} region");
+                validators.Add(regionValidator);
+            }
+
+            return MobileValidator(phoneNumber, validators, options);
+        }
+
+        private static bool MobileValidator(string phoneNumber, List<IRegionValidator> validators, RegionalOptions options = null)
+        {
+            if (options == null)
+            {
+                options = RegionalOptions.Default;
+            }
+            
+            phoneNumber = PreValidateHandling(phoneNumber, options);
+            var normalizedNumber = TelephoneNormalizer.ToPhoneNumberNormalization(phoneNumber, options, "+");
+
+            if (!(PhoneNumberValidateLength(phoneNumber, options) && PhoneNumberValidateFormat(phoneNumber, options)))
+                return false;
+
+            foreach (var validator in validators)
+            {
+                if (validator.IsMobileNumber(normalizedNumber, options.AllowNoSign))
+                    return true;
+            }
+
+            return false;
+        }
+        #endregion Mobile Validators
+
+        #region Any Telephone Validators
+
+        /// <summary>
+        /// Validates telephone number [1/3 In all available regions]
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static bool NumberValidator(string phoneNumber, RegionalOptions options = null)
+        {
+            return NumberValidator(phoneNumber, RegionValidatorContainer.GetAllValidators(), options);
+        }
+
+        /// <summary>
+        /// Validates telephone number [2/3 In a single region]
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="region"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static bool NumberValidator(string phoneNumber, Region region, RegionalOptions options = null)
+        {
+            var regionValidator = RegionValidatorContainer.GetRegionValidator(region);
+            if (regionValidator == null)
+                throw new NotImplementedException("No Validator implementation found for this region");
+            return NumberValidator(phoneNumber, new List<IRegionValidator> { regionValidator }, options);
+        }
+
+        /// <summary>
+        /// Validates telephone number [3/3 In a list of selected regions]
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="regions"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static bool NumberValidator(string phoneNumber, IEnumerable<Region> regions, RegionalOptions options = null)
+        {
+            List<IRegionValidator> validators = new List<IRegionValidator>();
+            foreach (var region in regions)
+            {
+                var regionValidator = RegionValidatorContainer.GetRegionValidator(region);
+                if (regionValidator == null)
+                    throw new NotImplementedException($"No Validator implementation found for {region} region");
+                validators.Add(regionValidator);
+            }
+
+            return NumberValidator(phoneNumber, validators, options);
+        }
+
+        private static bool NumberValidator(string phoneNumber, List<IRegionValidator> validators, RegionalOptions options = null)
+        {
+            if (options == null)
+            {
+                options = RegionalOptions.Default;
+            }
+
+            phoneNumber = PreValidateHandling(phoneNumber, options);
+            var normalizedNumber = TelephoneNormalizer.ToPhoneNumberNormalization(phoneNumber, options, "+");
+
+            if (!(PhoneNumberValidateLength(phoneNumber, options) && PhoneNumberValidateFormat(phoneNumber, options)))
+                return false;
+
+            foreach (var validator in validators)
+            {
+                if (validator.IsValidNumber(normalizedNumber, options.AllowNoSign))
+                    return true;
+            }
+
+            return false;
+        }
+        #endregion Telephone Validators
 
         /// <summary>
         /// Validate a phone number in length and signature of against an international phone number rules

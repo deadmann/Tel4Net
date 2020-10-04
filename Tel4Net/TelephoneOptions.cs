@@ -15,10 +15,42 @@
         /// <summary>
         /// The default sets of configurations
         /// </summary>
-        public static readonly TelephoneOptions Default = new TelephoneOptions
+        public static readonly TelephoneOptions Default;
+
+        static TelephoneOptions()
         {
-            ProcessNaturalCharacterOnly = false
-        };
+            Default = new TelephoneOptions
+            {
+                ProcessNaturalCharacterOnly = false
+            };
+        }
+
+        #endregion Defaults
+    }
+
+    /// <summary>
+    /// Provides extra options while validating a mobile number
+    /// </summary>
+    public class RegionalOptions : TelephoneOptions
+    {
+        /// <summary>
+        /// Allow phone number to not include a city or international signature such as + or 00
+        /// </summary>
+        public bool AllowNoSign { get; set; }
+
+        #region Defaults
+        /// <summary>
+        /// The default sets of configurations
+        /// </summary>
+        public new static readonly RegionalOptions Default;
+        static RegionalOptions()
+        {
+            Default = new RegionalOptions
+            {
+                AllowNoSign = false,
+                ProcessNaturalCharacterOnly = false
+            };
+        }
         #endregion Defaults
     }
 }

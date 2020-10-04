@@ -4,6 +4,64 @@
         <name>Tel4Net</name>
     </assembly>
     <members>
+        <member name="T:Tel4Net.RegionValidation.IRegionValidator">
+            <summary>
+            Provide region based validation interface
+            </summary>
+        </member>
+        <member name="M:Tel4Net.RegionValidation.IRegionValidator.IsMobileNumber(System.String,System.Boolean)">
+            <summary>
+            Check if phone number is a mobile number
+            </summary>
+            <param name="normalizedPhoneNumber">the normalized phone number to validate</param>
+            <param name="allowNoSign">Allow phone number to not include a city or international signature such as + or 00</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tel4Net.RegionValidation.IRegionValidator.IsValidNumber(System.String,System.Boolean)">
+            <summary>
+            Check if phone number is valid number in country
+            </summary>
+            <param name="normalizedPhoneNumber">the normalized phone number to validate</param>
+            <param name="allowNoSign">Allow phone number to not include a city or international signature such as + or 00</param>
+            <returns></returns>
+        </member>
+        <member name="T:Tel4Net.RegionValidation.RegionRegistry">
+            <summary>
+            Provide functionality to register or fetch specific region
+            </summary>
+        </member>
+        <member name="M:Tel4Net.RegionValidation.RegionRegistry.RegisterRegions(Tel4Net.RegionValidation.RegionValidatorContainer)">
+            <summary>
+            Register all available regions in validation system
+            </summary>
+            <param name="container">the container that all validations will registers in</param>
+        </member>
+        <member name="T:Tel4Net.RegionValidation.Region">
+            <summary>
+            All Regions defined within the system
+            </summary>
+        </member>
+        <member name="F:Tel4Net.RegionValidation.Region.Iran">
+            <summary>
+            Iran Country
+            </summary>
+        </member>
+        <member name="T:Tel4Net.RegionValidation.Regions.IranValidator">
+            <summary>
+            Validate Iranian Phone Numbers
+            </summary>
+        </member>
+        <member name="M:Tel4Net.RegionValidation.Regions.IranValidator.IsMobileNumber(System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Tel4Net.RegionValidation.Regions.IranValidator.IsValidNumber(System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Tel4Net.RegionValidation.RegionValidatorContainer">
+            <summary>
+            Provide functionality to register or fetch specific region
+            </summary>
+        </member>
         <member name="T:Tel4Net.TelephoneNormalizer">
             <summary>
             This class provides phone number Normalizations functionality
@@ -35,10 +93,81 @@
             The default sets of configurations
             </summary>
         </member>
+        <member name="T:Tel4Net.RegionalOptions">
+            <summary>
+            Provides extra options while validating a mobile number
+            </summary>
+        </member>
+        <member name="P:Tel4Net.RegionalOptions.AllowNoSign">
+            <summary>
+            Allow phone number to not include a city or international signature such as + or 00
+            </summary>
+        </member>
+        <member name="F:Tel4Net.RegionalOptions.Default">
+            <summary>
+            The default sets of configurations
+            </summary>
+        </member>
         <member name="T:Tel4Net.TelephoneValidator">
             <summary>
             This class provides phone number Validations functionality
             </summary>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.MobileValidator(System.String,Tel4Net.RegionalOptions)">
+            <summary>
+            Validates mobile number [1/3 In all available regions]
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.MobileValidator(System.String,Tel4Net.RegionValidation.Region,Tel4Net.RegionalOptions)">
+            <summary>
+            Validates mobile number [2/3 In a single region]
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="region"></param>
+            <param name="options"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.MobileValidator(System.String,System.Collections.Generic.IEnumerable{Tel4Net.RegionValidation.Region},Tel4Net.RegionalOptions)">
+            <summary>
+            Validates mobile number [3/3 In a list of selected regions]
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="regions"></param>
+            <param name="options"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.NumberValidator(System.String,Tel4Net.RegionalOptions)">
+            <summary>
+            Validates telephone number [1/3 In all available regions]
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.NumberValidator(System.String,Tel4Net.RegionValidation.Region,Tel4Net.RegionalOptions)">
+            <summary>
+            Validates telephone number [2/3 In a single region]
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="region"></param>
+            <param name="options"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Tel4Net.TelephoneValidator.NumberValidator(System.String,System.Collections.Generic.IEnumerable{Tel4Net.RegionValidation.Region},Tel4Net.RegionalOptions)">
+            <summary>
+            Validates telephone number [3/3 In a list of selected regions]
+            </summary>
+            <param name="phoneNumber"></param>
+            <param name="regions"></param>
+            <param name="options"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Tel4Net.TelephoneValidator.PhoneNumberI10nValidation(System.String,Tel4Net.TelephoneOptions)">
             <summary>
