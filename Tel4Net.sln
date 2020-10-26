@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Docs", "_Docs", "{661C6369
 		_Docs\push nuget github package.txt = _Docs\push nuget github package.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{C558619B-BAE1-432F-BB6E-B3DCEB0D6A19}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tel4Net.TestCore", "Test\Tel4Net.TestCore\Tel4Net.TestCore.csproj", "{4D63817C-EBD9-4757-943C-EFCC2CDCC31F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +24,16 @@ Global
 		{EAF58A04-4C35-4798-BA2B-671CDC291EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAF58A04-4C35-4798-BA2B-671CDC291EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAF58A04-4C35-4798-BA2B-671CDC291EDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D63817C-EBD9-4757-943C-EFCC2CDCC31F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D63817C-EBD9-4757-943C-EFCC2CDCC31F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D63817C-EBD9-4757-943C-EFCC2CDCC31F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D63817C-EBD9-4757-943C-EFCC2CDCC31F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4D63817C-EBD9-4757-943C-EFCC2CDCC31F} = {C558619B-BAE1-432F-BB6E-B3DCEB0D6A19}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1E04404F-FE63-47E7-9231-ED060D8EA9E0}
