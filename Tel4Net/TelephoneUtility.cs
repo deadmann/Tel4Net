@@ -26,7 +26,7 @@ namespace Tel4Net
 
                     top = @char;
                 }
-                else if ((search = openCloseCharacters.FirstOrDefault(w => w.Closing == @char)) != null && top.Value == search.Opening)
+                else if ((search = openCloseCharacters.FirstOrDefault(w => w.Closing == @char)) != null && top != null && top.Value == search.Opening)
                 {
                     charStack.Pop();
                     top = (charStack.Count == 0) ? (char?)null : charStack.Peek();
