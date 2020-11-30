@@ -13,6 +13,7 @@ namespace Tel4Net.RegionValidation
         /// <param name="container">the container that all validations will registers in</param>
         public static void RegisterRegions(RegionValidatorContainer container)
         {
+            // TODO: REGISTER YOUR REGION HERE
             container.RegisterRegions(Region.Iran, new IranValidator());
         }
     }
