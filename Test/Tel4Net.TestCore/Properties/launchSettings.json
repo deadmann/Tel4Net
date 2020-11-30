@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Tel4Net.TestCore": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

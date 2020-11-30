@@ -44,15 +44,20 @@ namespace Tel4Net.TestCore
             }
         }
 
+        /// <summary>
+        /// [0-9][1-9] 00[1-9] +[1-9]
+        /// </summary>
+        /// <param name="shouldSuccess"></param>
+        /// <param name="number"></param>
         [Test]
         [TestCase(true, "77555521")]
         [TestCase(true, "09132198895")]
         [TestCase(true, "+989213328197")]
         [TestCase(true, "00983134335774")]
         //
+        [TestCase(false, "000989132198895")]
         [TestCase(false, "-989132198895")]
         [TestCase(false, "^1-555-4352")]
-        [TestCase(false, "1-555-4352")]
         [TestCase(false, "*1-555-4352")]
         public void ValidateFormat_ShouldStartWithValidSignature(bool shouldSuccess, string number)
         {
@@ -82,6 +87,63 @@ namespace Tel4Net.TestCore
         public void ValidateFormat_OpeningOrClosingParenthesesOrBracketsShouldHaveMatching(bool shouldSuccess, string number)
         {
             var isValid = PhoneNumberValidateFormat(number);
+            if (shouldSuccess)
+            {
+                Assert.True(isValid);
+            }
+            else
+            {
+                Assert.False(isValid);
+            }
+        }
+
+        [Test]
+        [TestCase(true, "555986845")]
+        //
+        [TestCase(false, "0555986845")]
+        [TestCase(false, "009887239534")]
+        [TestCase(false, "+1 (432) 555-5423")]
+        public void ValidateRegion_TestInboundNumbers(bool shouldSuccess, string number)
+        {
+            var isValid = PhoneNumberInboundValidation(number);
+            if (shouldSuccess)
+            {
+                Assert.True(isValid);
+            }
+            else
+            {
+                Assert.False(isValid);
+            }
+        }
+
+        [Test]
+        [TestCase(true, "0555986845")]
+        //
+        [TestCase(false, "555986845")]
+        [TestCase(false, "009887239534")]
+        [TestCase(false, "+1 (432) 555-5423")]
+        public void ValidateRegion_TestCityNumbers(bool shouldSuccess, string number)
+        {
+            var isValid = PhoneNumberCityValidation(number);
+            if (shouldSuccess)
+            {
+                Assert.True(isValid);
+            }
+            else
+            {
+                Assert.False(isValid);
+            }
+        }
+
+        [Test]
+        [TestCase(true, "009887239534")]
+        [TestCase(true, "+1 (432) 555-5423")]
+        //
+        [TestCase(false, "555986845")]
+        [TestCase(false, "0555986845")]
+        public void ValidateRegion_TestI10nNumbers(bool shouldSuccess, string number)
+        {
+            var isValid = PhoneNumberI10nValidation(number);
             if (shouldSuccess)
             {
                 Assert.True(isValid);

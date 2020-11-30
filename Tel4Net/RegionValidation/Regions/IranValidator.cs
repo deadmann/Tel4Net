@@ -34,7 +34,7 @@
                 return true;
             }
             else if ((!normalizedPhoneNumber.StartsWith("+")
-                      && normalizedPhoneNumber.StartsWith("0")
+                      && !normalizedPhoneNumber.StartsWith("0")
                 ) && (normalizedPhoneNumber.Length == 7
                       || (allowNoSign
                           && (normalizedPhoneNumber.Length == 12 || normalizedPhoneNumber.Length == 10))))
