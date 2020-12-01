@@ -8,39 +8,26 @@
         /// <inheritdoc />
         public bool IsMobileNumber(string normalizedPhoneNumber, bool allowNoSign)
         {
-            if (!IsValidNumber(normalizedPhoneNumber, allowNoSign))
-                return false;
-
-            if (normalizedPhoneNumber.StartsWith("+989")
-                || normalizedPhoneNumber.StartsWith("09")
-                || (allowNoSign && normalizedPhoneNumber.StartsWith("989"))
-                || (allowNoSign && normalizedPhoneNumber.StartsWith("9")))
+            if ((normalizedPhoneNumber.StartsWith("+989") && normalizedPhoneNumber.Length == 13) // Signed Country
+                || (normalizedPhoneNumber.StartsWith("09") && normalizedPhoneNumber.Length == 11) // Signed City/Operator
+                || ((allowNoSign && normalizedPhoneNumber.StartsWith("989") && normalizedPhoneNumber.Length == 12)) // Unsigned Country
+                || ((allowNoSign && normalizedPhoneNumber.StartsWith("9")) && normalizedPhoneNumber.Length == 10)) // Unsigned City
                 return true;
             return false;
-
         }
 
         /// <inheritdoc />
         public bool IsValidNumber(string normalizedPhoneNumber, bool allowNoSign)
         {
-            if (normalizedPhoneNumber.StartsWith("+")
-                && normalizedPhoneNumber.Length == 13)
-            {
+            if ((normalizedPhoneNumber.StartsWith("+98") && normalizedPhoneNumber.Length == 13) // Signed Country
+                || (normalizedPhoneNumber.StartsWith("0") && normalizedPhoneNumber.Length == 11) // Signed City/Operator
+                || (
+                    (!normalizedPhoneNumber.StartsWith("+") && !normalizedPhoneNumber.StartsWith("0")) // Unsigned
+                    && ((normalizedPhoneNumber.Length == 8) // Inbound
+                        || (allowNoSign && normalizedPhoneNumber.StartsWith("98") && normalizedPhoneNumber.Length == 12) // Unsigned Country
+                        || (allowNoSign && normalizedPhoneNumber.Length == 10)) // Unsigned City
+                ))
                 return true;
-            }
-            else if (normalizedPhoneNumber.StartsWith("0") 
-                     && normalizedPhoneNumber.Length == 11)
-            {
-                return true;
-            }
-            else if ((!normalizedPhoneNumber.StartsWith("+")
-                      && !normalizedPhoneNumber.StartsWith("0")
-                ) && (normalizedPhoneNumber.Length == 7
-                      || (allowNoSign
-                          && (normalizedPhoneNumber.Length == 12 || normalizedPhoneNumber.Length == 10))))
-            {
-                return true;
-            }
 
             return false;
         }
