@@ -5,6 +5,9 @@
     /// </summary>
     internal interface IRegionValidator
     {
+        string EnglishName { get; }
+        string NativeName { get; }
+
         /// <summary>
         /// Check if phone number is a valid mobile number in the country
         /// </summary>

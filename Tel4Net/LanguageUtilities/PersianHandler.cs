@@ -2,6 +2,9 @@
 {
     internal class PersianHandler : ICharacterHandler
     {
+        public string EnglishName => "Persian";
+        public string NativeName => "فارسی";
+
         public string ToNaturalString(string input)
         {
             return input.Replace("۰", "0")

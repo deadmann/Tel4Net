@@ -6,7 +6,7 @@ namespace Tel4Net
 {
     internal static class TelephoneUtility
     {
-        private static readonly IList<ICharacterHandler> LanguageHandlers = new List<ICharacterHandler>();
+        internal static readonly IList<ICharacterHandler> LanguageHandlers = new List<ICharacterHandler>();
         static TelephoneUtility()
         {
             LanguageHandlers.Add(new PersianHandler());

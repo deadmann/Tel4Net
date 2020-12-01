@@ -217,5 +217,34 @@
             <param name="options"></param>
             <returns></returns>
         </member>
+        <member name="T:Tel4Net.TelephoneVersionInfo">
+            <summary>
+            Provide info about Tel4Net and if it is beneficial for you
+            </summary>
+        </member>
+        <member name="M:Tel4Net.TelephoneVersionInfo.GetSupportingLanguageEnglishName">
+            <summary>
+            Get supporting numeric charsets language name, in english.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tel4Net.TelephoneVersionInfo.GetSupportingLanguageNativeName">
+            <summary>
+            Get supporting numeric charsets language name, in native language.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tel4Net.TelephoneVersionInfo.GetSupportingRegionEnglishName">
+            <summary>
+            Get supporting region specific validators, named in english.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tel4Net.TelephoneVersionInfo.GetSupportingRegionNativeName">
+            <summary>
+            Get supporting region specific validator, named in their native language.
+            </summary>
+            <returns></returns>
+        </member>
     </members>
 </doc>

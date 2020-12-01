@@ -9,7 +9,8 @@
     <Description>Provides validation and normalization for phone numbers. with respect to E.164 (an international standard (ITU-T Recommendation), titled The international public telecommunication numbering plan)</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>- 1.1.0: 
+    <PackageReleaseNotes>- 1.1.1: Add library version info provider
+- 1.1.0: 
 * Add regional validation
 * Pre Compile uncompiled Regex
 - 1.0.1: Update package info
@@ -17,9 +18,9 @@
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <Authors>Hassan Faghihi</Authors>
     <Product>Tel4You</Product>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
-    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
+    <Version>1.1.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

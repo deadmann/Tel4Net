@@ -5,6 +5,9 @@
     /// </summary>
     internal class IranValidator : IRegionValidator
     {
+        public string EnglishName => "Iran, Persia";
+        public string NativeName => "ایران، پرشیا";
+
         /// <inheritdoc />
         public bool IsMobileNumber(string normalizedPhoneNumber, bool allowNoSign)
         {
