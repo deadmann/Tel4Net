@@ -9,6 +9,8 @@ namespace Tel4Net
     /// </summary>
     public static class TelephoneNormalizer
     {
+        private static readonly Regex DigitOnlyRegex = new Regex(@"[^\d]", RegexOptions.Compiled);
+
         /// <summary>
         /// Normalize a phone number, with respect to parts which that phone number provides (e.g. it won't change an international phone number to city phone number).
         /// </summary>
@@ -28,7 +30,8 @@ namespace Tel4Net
             if (phoneNumber == null)
                 return null;
 
-            var digitOnly = Regex.Replace(phoneNumber, @"[^\d]", "").Trim();
+            var digitOnly = DigitOnlyRegex.Replace(phoneNumber, "").Trim();
+            // var digitOnly = Regex.Replace(phoneNumber, @"[^\d]", "").Trim(); // TODO: Performance Monitor
 
             if (phoneNumber.Trim().StartsWith("+"))
             {

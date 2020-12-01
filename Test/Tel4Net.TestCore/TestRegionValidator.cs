@@ -15,7 +15,7 @@ namespace Tel4Net.TestCore
         [SetUp]
         public void Setup()
         {
-
+            MobileValidator(""); // First Access -- Init Statics
         }
 
         [Test]
@@ -122,25 +122,26 @@ namespace Tel4Net.TestCore
             Assert.True(isValid);
         }
 
-        //[Test]
-        //// TODO: Add Valid Mobile Number SortBy country code  in comment
-        //[TestCase(true, "9132198895", new[] { Region.Iran })]           // IR   --Valid Operator/City
-        //// TODO: Add Invalid Mobile Number SortBy country code in comment
-        //[TestCase(false, "02177555521", new[] { Region.Iran })]         // IR
-        //public void ValidateMobileNumber_NaturalCharacterOnly(bool shouldSuccess, string number, Region[] region)
-        //{
-        //    var isValid = MobileValidator(number, region, new RegionalOptions
-        //    {
-        //        ProcessNaturalCharacterOnly = true
-        //    });
-        //    if (shouldSuccess)
-        //    {
-        //        Assert.True(isValid);
-        //    }
-        //    else
-        //    {
-        //        Assert.False(isValid);
-        //    }
-        //}
+        [Test]
+        // TODO: Add Valid Mobile Number SortBy country code  in comment
+        [TestCase(true, "09154475591", Region.Iran)] // IR   --Valid Operator/City - ASCII Charset 
+        // TODO: Add Invalid Mobile Number SortBy country code in comment
+        [TestCase(false, "۵۸۴۱۴۷۹۳", Region.Iran)] // IR   --Valid Inbound - Farsi Norm
+        [TestCase(false, "٠٠٩٨٨٣٥٨٦٢١٣١٠", Region.Iran)] // IR   --Valid I10n - Farsi IOS
+        public void ValidatePhoneNumber_NaturalCharacterOnly(bool shouldSuccess, string number, Region region)
+        {
+            var isValid = NumberValidator(number, region, new RegionalOptions
+            {
+                ProcessNaturalCharacterOnly = true
+            });
+            if (shouldSuccess)
+            {
+                Assert.True(isValid);
+            }
+            else
+            {
+                Assert.False(isValid);
+            }
+        }
     }
 }

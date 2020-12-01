@@ -6,7 +6,7 @@
     internal interface IRegionValidator
     {
         /// <summary>
-        /// Check if phone number is a mobile number
+        /// Check if phone number is a valid mobile number in the country
         /// </summary>
         /// <param name="normalizedPhoneNumber">the normalized phone number to validate</param>
         /// <param name="allowNoSign">Allow phone number to not include a city or international signature such as + or 00</param>

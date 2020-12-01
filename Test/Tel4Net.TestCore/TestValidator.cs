@@ -14,7 +14,7 @@ namespace Tel4Net.TestCore
         [SetUp]
         public void Setup()
         {
-
+            PhoneNumberValidateLength(""); // First Access -- Init Statics
         }
 
         /// <summary>

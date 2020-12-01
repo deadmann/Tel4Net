@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Test\Tel4Net.TestCore\Tel4Net.TestCore.csproj" />
+    <ProjectReference Include="..\Tel4Net.TestCore\Tel4Net.TestCore.csproj" />
   </ItemGroup>
 
 </Project>

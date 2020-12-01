@@ -15,7 +15,7 @@ namespace Tel4Net.TestCore
         [SetUp]
         public void Setup()
         {
-
+            ToPhoneNumberNormalization(""); // First Access -- Init Statics
         }
 
         [Test]
