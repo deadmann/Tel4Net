@@ -14,7 +14,9 @@ namespace TestConsole
             
             // TODO: Fill free to clear any code below here, and test, or debug your code, in case, same to me, your Unit Test debugger doesn't work
 
-            tn.NormalizePhoneNumber_NaturalCharSet("۵۸۴۱۴۷۹۳", "58414793", "+");
+            trv.ValidatePhoneNumber_NonNaturalCharacterTesting("۵۸۴۱۴۷۹۳", Region.Iran);
+
+            tn.NormalizePhoneNumber_AllowNaturalCharSet("۵۸۴۱۴۷۹۳", "58414793", "+");
             tn.NormalizePhoneNumber_Simple("+1483542357", "+1483542357", "+");
 
             trv.ValidateMobileNumber_NoSign(true, "9132198895", Region.Iran);
