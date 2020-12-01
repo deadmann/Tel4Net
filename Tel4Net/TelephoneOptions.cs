@@ -7,7 +7,7 @@
     {
         /// <summary>
         /// If true:  ignores any characters beside formal ascii english numbers. <br />
-        /// If false: try to convert undefined characters (number from other languages) to ascii english corresponding characters, and then normalize.
+        /// If false: (default) try to convert undefined characters (number from other languages) to ascii english corresponding characters, and then normalize.
         /// </summary>
         public bool ProcessNaturalCharacterOnly { get; set; }
 
@@ -34,7 +34,7 @@
     public class RegionalOptions : TelephoneOptions
     {
         /// <summary>
-        /// Allow phone number to not include a city or international signature such as + or 00
+        /// (default is false) Allow phone number to not include a city or international signature such as + or 00
         /// </summary>
         public bool AllowNoSign { get; set; }
 
