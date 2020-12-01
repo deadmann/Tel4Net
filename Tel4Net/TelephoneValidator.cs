@@ -281,7 +281,7 @@ namespace Tel4Net
                 options = TelephoneOptions.Default;
             }
 
-            TelephoneUtility.PreProcessingHandling(input, options);
+            input = TelephoneUtility.PreProcessingHandling(input, options);
 
             return input;
         }
