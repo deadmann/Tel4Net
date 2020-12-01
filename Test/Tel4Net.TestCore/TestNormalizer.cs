@@ -41,11 +41,20 @@ namespace Tel4Net.TestCore
 
         [Test]
         [TestCase("۵۸۴۱۴۷۹۳", "58414793", "+")]                     // IR - Farsi Normal
-        [TestCase("٠٠٩٨٨٣٥٨٦١٢١٣١٠", "+9883586121310", "+")]        // IR - Farsi IOS
-        public void NormalizePhoneNumber_NaturalCharSet(string number, string expected, string normalizeSign = null)
+        [TestCase("٠٠٩٨٨٣٥٨٦٢١٣١٠", "+988358621310", "+")]        // IR - Farsi IOS
+        public void NormalizePhoneNumber_AllowNaturalCharSet(string number, string expected, string normalizeSign = null)
         {
             var normalizedNumber = ToPhoneNumberNormalization(number, new TelephoneOptions{ProcessNaturalCharacterOnly = false}, normalizeSign);
             Assert.AreEqual(expected, normalizedNumber);
+        }
+
+        [Test]
+        [TestCase("۵۸۴۱۴۷۹۳", "58414793", "+")]                     // IR - Farsi Normal
+        [TestCase("٠٠٩٨٨٣٥٨٦٢١٣١٠", "+988358621310", "+")]        // IR - Farsi IOS
+        public void NormalizePhoneNumber_DisallowNaturalCharSet(string number, string expected, string normalizeSign = null)
+        {
+            var normalizedNumber = ToPhoneNumberNormalization(number, new TelephoneOptions { ProcessNaturalCharacterOnly = true }, normalizeSign);
+            Assert.AreNotEqual(expected, normalizedNumber);
         }
     }
 }
