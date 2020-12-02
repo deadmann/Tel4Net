@@ -1,0 +1,4 @@
+Dialing Code exceptions: https://www.iban.com/dialing-codes
+Not all country or region use the 00 as country code prefix. we sometime need to check other numbers too. these exceptions should be applied in the phone validator too.
+
+Fortunately the + sign is same, everywhere, and won't affect telephone number.
