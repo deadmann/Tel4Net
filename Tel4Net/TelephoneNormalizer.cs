@@ -45,8 +45,19 @@ namespace Tel4Net
                 }
                 return defaultI18nStart;
             }
+
+            if (IsExceptionalPhoneNumber(phoneNumber))
+            {
+
+            }
+
             //Other 09132198895, 5553254
             return digitOnly;
+        }
+
+        private static bool IsExceptionalPhoneNumber(string phoneNumber)
+        {
+            
         }
 
         private static string PreNormalizationHandling(string input, TelephoneOptions options)
