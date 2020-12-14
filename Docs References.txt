@@ -2,3 +2,5 @@ https://en.wikipedia.org/wiki/E.164
 https://en.wikipedia.org/wiki/E.123
 https://www.iban.com/dialing-codes
 https://en.wikipedia.org/wiki/List_of_country_calling_codes
+https://en.wikipedia.org/wiki/List_of_mobile_telephone_prefixes_by_country
+https://www.globalcallforwarding.com/international-call-prefixes/
