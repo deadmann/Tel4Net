@@ -9,6 +9,6 @@ namespace Tel4Net.ExceptionNumbers.Regions
         public string[] NationalPrefix => new[] { "8" };
         public string[] NationalNumberPrefix => new string[0];
         public int[] NationalNumberLength => new[] { 9 };
-        public Func<string, bool> CustomValidation => null
+        public Func<string, bool> CustomValidation => null;
     }
 }

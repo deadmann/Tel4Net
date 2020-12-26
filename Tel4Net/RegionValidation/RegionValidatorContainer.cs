@@ -15,7 +15,7 @@ namespace Tel4Net.RegionValidation
         public RegionValidatorContainer()
         {
             _regionValidators = new Dictionary<Region, IRegionValidator>();
-            RegionRegistry.RegisterRegions(this);
+            RegionRegistrar.RegisterRegions(this);
         }
 
         public void RegisterRegions(Region region, IRegionValidator validator)

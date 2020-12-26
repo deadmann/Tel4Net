@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Tel4Net.RegionValidation;
 
 namespace Tel4Net.ExceptionNumbers
@@ -10,24 +9,24 @@ namespace Tel4Net.ExceptionNumbers
     /// </summary>
     internal class ExceptionalContainer
     {
-        private readonly List<Region, IRegionValidator> _regionValidators;
+        private readonly Dictionary<Country, IExceptionalCountryCode> _exceptionalCountries;
 
-        public RegionValidatorContainer()
+        public ExceptionalContainer()
         {
-            _regionValidators = new Dictionary<Region, IRegionValidator>();
-            RegionRegistry.RegisterRegions(this);
+            _exceptionalCountries = new Dictionary<Country, IExceptionalCountryCode>();
+            ExceptionalCountryRegistrar.RegisterCountries(this);
         }
 
-        public void RegisterRegions(Region region, IRegionValidator validator)
+        public void RegisterRegions(Country country, IExceptionalCountryCode exceptionalCountry)
         {
-            _regionValidators.Add(region, validator);
+            _exceptionalCountries.Add(country, exceptionalCountry);
         }
 
-        public List<IRegionValidator> GetAllValidators()
+        public List<IExceptionalCountryCode> GetAllValidators()
         {
-            return _regionValidators.Values.ToList();
+            return _exceptionalCountries.Values.ToList();
         }
 
-        public IRegionValidator GetRegionValidator(Region region) => _regionValidators[region];
+        public IExceptionalCountryCode GetRegionValidator(Country country) => _exceptionalCountries[country];
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Tel4Net.LanguageUtilities
+﻿namespace Tel4Net.LanguageUtilities.Handlers
 {
     internal class PersianHandler : ICharacterHandler
     {

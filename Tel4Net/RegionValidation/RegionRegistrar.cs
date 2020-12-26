@@ -5,7 +5,7 @@ namespace Tel4Net.RegionValidation
     /// <summary>
     /// Provide functionality to register or fetch specific region
     /// </summary>
-    internal static class RegionRegistry
+    internal static class RegionRegistrar
     {
         /// <summary>
         /// Register all available regions in validation system
