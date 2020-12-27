@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.RegularExpressions;
+using Tel4Net.ExceptionNumbers;
 
 namespace Tel4Net
 {
@@ -10,6 +12,8 @@ namespace Tel4Net
     public static class TelephoneNormalizer
     {
         private static readonly Regex DigitOnlyRegex = new Regex(@"[^\d]", RegexOptions.Compiled);
+
+        private static readonly ExceptionalContainer ExceptionalContainer = new ExceptionalContainer();
 
         /// <summary>
         /// Normalize a phone number, with respect to parts which that phone number provides (e.g. it won't change an international phone number to city phone number).
@@ -33,10 +37,33 @@ namespace Tel4Net
             var digitOnly = DigitOnlyRegex.Replace(phoneNumber, "").Trim();
             // var digitOnly = Regex.Replace(phoneNumber, @"[^\d]", "").Trim(); // TODO: Performance Monitor
 
+            #region Exceptional Normalizer
+            if (IsExceptionalPhoneNumber(out var exception, phoneNumber))
+            {
+                if (exception.CustomNormalizer != null)
+                    return exception.CustomNormalizer(phoneNumber);
+
+                #region International Prefix
+                if (phoneNumber.Trim().StartsWith("+"))
+                    return (defaultI18nStart == "+" ? "+" : exception.InternationalPrefixes[0]) + digitOnly;
+
+                foreach (var intPrefix in exception.InternationalPrefixes)
+                    if(digitOnly.StartsWith(intPrefix))
+                        if (digitOnly.Length > intPrefix.Length)
+                            return (defaultI18nStart == "+" ? "+" : intPrefix) + digitOnly.Substring(intPrefix.Length);
+                #endregion International Prefix
+
+                return digitOnly; // National Prefix & No Prefix
+            }
+            #endregion Exceptional Normalizer
+
+            #region Default Normalizer (ITU-T Recommendation)
+
             if (phoneNumber.Trim().StartsWith("+"))
             {
                 return defaultI18nStart + digitOnly;
             }
+
             if (digitOnly.StartsWith("00"))
             {
                 if (digitOnly.Length > 2)
@@ -46,18 +73,47 @@ namespace Tel4Net
                 return defaultI18nStart;
             }
 
-            if (IsExceptionalPhoneNumber(phoneNumber))
-            {
-
-            }
+            #endregion Default Normalizer (ITU-T Recommendation)
 
             //Other 09132198895, 5553254
-            return digitOnly;
+            return digitOnly; // National Prefix & No Prefix
         }
 
-        private static bool IsExceptionalPhoneNumber(string phoneNumber)
+        /// <summary>
+        /// Find countries that do not follows the ITU-T recommendations
+        /// </summary>
+        /// <param name="selectedException"></param>
+        /// <param name="phoneNumber"></param>
+        /// <returns></returns>
+        private static bool IsExceptionalPhoneNumber(out IExceptionalCountryCode selectedException, string phoneNumber)
         {
-            
+            foreach (var definition in ExceptionalContainer.GetAllDefinitions())
+            {
+                if (definition.CustomValidation != null &&
+                    definition.CustomValidation(phoneNumber))
+                {
+                    selectedException = definition;
+                    return true;
+                }
+
+                if (MatchCombination(phoneNumber, definition))
+                {
+                    selectedException = definition;
+                    return true;
+                }
+            }
+
+            selectedException = null;
+            return false;
+        }
+
+        private static bool MatchCombination(string phoneNumber, IExceptionalCountryCode definition)
+        {
+            return definition.InternationalPrefixes.Any(internationalPrefix =>
+                definition.CountryCodes.Any(countryCode =>
+                    phoneNumber.StartsWith(internationalPrefix + countryCode)
+                )
+            );
         }
 
         private static string PreNormalizationHandling(string input, TelephoneOptions options)

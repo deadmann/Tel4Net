@@ -17,5 +17,9 @@ namespace Tel4Net.ExceptionNumbers
         /// Optional
         /// </summary>
         Func<string, bool> CustomValidation { get; }
+        /// <summary>
+        /// Optional
+        /// </summary>
+        Func<string, string> CustomNormalizer { get; }
     }
 }

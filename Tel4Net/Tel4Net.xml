@@ -4,6 +4,168 @@
         <name>Tel4Net</name>
     </assembly>
     <members>
+        <member name="T:Tel4Net.ExceptionNumbers.ExceptionalContainer">
+            <summary>
+            Provide functionality to register or fetch specific region
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.ExceptionalCountryRegistrar">
+            <summary>
+            Provide functionality to register or fetch specific region
+            </summary>
+        </member>
+        <member name="M:Tel4Net.ExceptionNumbers.ExceptionalCountryRegistrar.RegisterCountries(Tel4Net.ExceptionNumbers.ExceptionalContainer)">
+            <summary>
+            Register all available regions in validation system
+            </summary>
+            <param name="container">the container that all validations will registers in</param>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Country">
+            <summary>
+            All Regions defined within the system
+            </summary>
+        </member>
+        <member name="F:Tel4Net.ExceptionNumbers.Country.SintMaartenDp">
+            <summary>
+            Sint Maarten (Dutch part)
+            </summary>
+        </member>
+        <member name="F:Tel4Net.ExceptionNumbers.Country.Goc">
+            <summary>
+            Group of countries, shared code
+            </summary>
+        </member>
+        <member name="F:Tel4Net.ExceptionNumbers.Country.Gmss">
+            <summary>
+            Global Mobile Satellite System (GMSS), shared
+            </summary>
+        </member>
+        <member name="F:Tel4Net.ExceptionNumbers.Country.InmarsatSnac">
+            <summary>
+            Inmarsat SNAC
+            </summary>
+        </member>
+        <member name="F:Tel4Net.ExceptionNumbers.Country.InternationalNetworks">
+            <summary>
+            International Networks, shared code
+            </summary>
+        </member>
+        <member name="F:Tel4Net.ExceptionNumbers.Country.Iprs">
+            <summary>
+            International Premium Rate Service (IPRS)
+            </summary>
+        </member>
+        <member name="F:Tel4Net.ExceptionNumbers.Country.Iscs">
+            <summary>
+            International Shared Cost Service (ISCS)
+            </summary>
+        </member>
+        <member name="F:Tel4Net.ExceptionNumbers.Country.Tdr">
+            <summary>
+            Telecommunications for Disaster Relief (TDR)
+            </summary>
+        </member>
+        <member name="F:Tel4Net.ExceptionNumbers.Country.Tpnis">
+            <summary>
+            Trial of a proposed new international service
+            </summary>
+        </member>
+        <member name="F:Tel4Net.ExceptionNumbers.Country.Upt">
+            <summary>
+            Universal Personal Telecommunication (UPT)
+            </summary>
+        </member>
+        <member name="F:Tel4Net.ExceptionNumbers.Country.Reserved">
+            <summary>
+            **Reserved**
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.IExceptionalCountryCode">
+            <summary>
+            Provides workarounds for exceptional phone numbers codes, when 00 doesn't applies for example  (810, or 000, or 011)
+            </summary>
+        </member>
+        <member name="P:Tel4Net.ExceptionNumbers.IExceptionalCountryCode.CustomValidation">
+            <summary>
+            Optional
+            </summary>
+        </member>
+        <member name="P:Tel4Net.ExceptionNumbers.IExceptionalCountryCode.CustomNormalizer">
+            <summary>
+            Optional
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Regions.Gmss">
+            <summary>
+            Global Mobile Satellite System (GMSS), shared
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Regions.Goc">
+            <summary>
+            Group of countries, shared code
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Regions.InmarsatSnac">
+            <summary>
+            Inmarsat SNAC
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Regions.InternationalNetworks">
+            <summary>
+            International Networks, shared code
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Regions.Iprs">
+            <summary>
+            International Premium Rate Service (IPRS)
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Regions.Iscs">
+            <summary>
+            International Shared Cost Service (ISCS)
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Regions.Reserved">
+            <summary>
+            **Reserved**
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Regions.SintMaartenDp">
+            <summary>
+            Sint Maarten (Dutch part)
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Regions.Tdr">
+            <summary>
+            Telecommunications for Disaster Relief (TDR)
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Regions.Tpnis">
+            <summary>
+            Trial of a proposed new international service
+            </summary>
+        </member>
+        <member name="T:Tel4Net.ExceptionNumbers.Regions.Upt">
+            <summary>
+            Universal Personal Telecommunication (UPT)
+            </summary>
+        </member>
+        <member name="T:Tel4Net.LanguageUtilities.CharacterHandlerRegistrar">
+            <summary>
+            Provide functionality to register or fetch specific Character Handler
+            </summary>
+        </member>
+        <member name="M:Tel4Net.LanguageUtilities.CharacterHandlerRegistrar.RegisterCharacterHandlers(Tel4Net.LanguageUtilities.CharacterHandlerContainer)">
+            <summary>
+            Register all Character Handlers in normalization system
+            </summary>
+            <param name="container">the container that all Character Handlers will registers in</param>
+        </member>
+        <member name="T:Tel4Net.LanguageUtilities.CharacterHandlerContainer">
+            <summary>
+            Provide functionality to register or fetch specific region
+            </summary>
+        </member>
         <member name="T:Tel4Net.RegionValidation.IRegionValidator">
             <summary>
             Provide region based validation interface
@@ -25,12 +187,12 @@
             <param name="allowNoSign">Allow phone number to not include a city or international signature such as + or 00</param>
             <returns></returns>
         </member>
-        <member name="T:Tel4Net.RegionValidation.RegionRegistry">
+        <member name="T:Tel4Net.RegionValidation.RegionRegistrar">
             <summary>
             Provide functionality to register or fetch specific region
             </summary>
         </member>
-        <member name="M:Tel4Net.RegionValidation.RegionRegistry.RegisterRegions(Tel4Net.RegionValidation.RegionValidatorContainer)">
+        <member name="M:Tel4Net.RegionValidation.RegionRegistrar.RegisterRegions(Tel4Net.RegionValidation.RegionValidatorContainer)">
             <summary>
             Register all available regions in validation system
             </summary>
@@ -76,6 +238,14 @@
             <param name="defaultI18nStart">while normalizing an international phone number, let you choose that number start with 00 or +.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Tel4Net.TelephoneNormalizer.IsExceptionalPhoneNumber(Tel4Net.ExceptionNumbers.IExceptionalCountryCode@,System.String)">
+            <summary>
+            Find countries that do not follows the ITU-T recommendations
+            </summary>
+            <param name="selectedException"></param>
+            <param name="phoneNumber"></param>
+            <returns></returns>
         </member>
         <member name="T:Tel4Net.TelephoneOptions">
             <summary>

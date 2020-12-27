@@ -13,5 +13,6 @@ namespace Tel4Net.ExceptionNumbers.Regions
         public string[] NationalNumberPrefix => new[] { "721" };
         public int[] NationalNumberLength => new[] { 7 };
         public Func<string, bool> CustomValidation => null;
+        public Func<string, string> CustomNormalizer => null;
     }
 }

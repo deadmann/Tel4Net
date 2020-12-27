@@ -12,6 +12,7 @@ namespace Tel4Net.ExceptionNumbers.Regions
         public string[] NationalNumberPrefix => new string[0];
         public int[] NationalNumberLength => new int[0];
         public Func<string, bool> CustomValidation => null;
+        public Func<string, string> CustomNormalizer => null;
     }
 
     internal class Vatican2 : IExceptionalCountryCode
@@ -22,5 +23,6 @@ namespace Tel4Net.ExceptionNumbers.Regions
         public string[] NationalNumberPrefix => new string[0];
         public int[] NationalNumberLength => new[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}; // Up to  11 Digits
         public Func<string, bool> CustomValidation => null;
+        public Func<string, string> CustomNormalizer => null;
     }
 }

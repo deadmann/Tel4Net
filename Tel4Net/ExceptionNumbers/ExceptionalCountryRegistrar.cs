@@ -27,8 +27,8 @@ namespace Tel4Net.ExceptionNumbers
             container.RegisterRegions(Country.Canada, new Canada() );
             container.RegisterRegions(Country.CaymanIslands, new CaymanIslands() );
             container.RegisterRegions(Country.Chile, new Chile() );
-            container.RegisterRegions(Country.China, new China() );
-            container.RegisterRegions(Country.China, new China2() );
+            container.RegisterRegions(Country.China1, new China() );
+            container.RegisterRegions(Country.China2, new China2() );
             container.RegisterRegions(Country.Colombia, new Colombia() );
             container.RegisterRegions(Country.Cuba, new Cuba() );
             container.RegisterRegions(Country.Dominica, new Dominica() );
@@ -71,7 +71,8 @@ namespace Tel4Net.ExceptionNumbers
             container.RegisterRegions(Country.UnitedStates, new UnitedStates() );
             container.RegisterRegions(Country.UnitedStatesVirginIslands, new UnitedStatesVirginIslands() );
             container.RegisterRegions(Country.Uzbekistan, new Uzbekistan() );
-            container.RegisterRegions(Country.Vatican, new Vatican() );
+            container.RegisterRegions(Country.Vatican1, new Vatican() );
+            container.RegisterRegions(Country.Vatican2, new Vatican2() );
 
             container.RegisterRegions(Country.Goc, new Goc());
 
@@ -94,7 +95,7 @@ namespace Tel4Net.ExceptionNumbers
     /// </summary>
     public enum Country
     {
-        AmericanSamoa,
+        AmericanSamoa = 0X0000000000000000000000000000000000000001,
         Anguilla,
         AntiguaAndBarbuda,
         Australia,
@@ -107,7 +108,8 @@ namespace Tel4Net.ExceptionNumbers
         Canada,
         CaymanIslands,
         Chile,
-        China,
+        China1,
+        China2,
         Colombia,
         Cuba,
         Dominica,
@@ -153,7 +155,8 @@ namespace Tel4Net.ExceptionNumbers
         UnitedStates,
         UnitedStatesVirginIslands,
         Uzbekistan,
-        Vatican,
+        Vatican1,
+        Vatican2,
 
         /// <summary>
         /// Group of countries, shared code
