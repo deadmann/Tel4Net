@@ -22,11 +22,11 @@ namespace Tel4Net.ExceptionNumbers
             _exceptionalCountries.Add(country, exceptionalCountry);
         }
 
-        public List<IExceptionalCountryCode> GetAllValidators()
+        public List<IExceptionalCountryCode> GetAllDefinitions()
         {
             return _exceptionalCountries.Values.ToList();
         }
 
-        public IExceptionalCountryCode GetRegionValidator(Country country) => _exceptionalCountries[country];
+        public IExceptionalCountryCode GetRegionDefinitions(Country country) => _exceptionalCountries[country];
     }
 }
